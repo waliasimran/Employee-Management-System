@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/elevated-view-laptop-stationeries-yellow-backdrop_23-2147880496.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1703721600&semt=ais');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            height: 100vh;
+        }
+        h1{
+            margin-top:100px;
+            font-size:50px;
+            color:black;
+            text-align: center;
+            text-shadow: 10px 6px 8px rgba(0, 0, 0, 0.2);
+            {% comment %} animation: typing 4s steps(40) forwards; {% endcomment %}
+            animation: fade-in 3s ease-in-out forwards;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+{% comment %} 
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        } {% endcomment %}
+
+        p{
+            margin-top:60px;
+            color:black;
+            font-size:20px;
+        }
+
+
+        .navbar {
+            background-color: #333;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffcc00;
+        }
+
+        {% comment %} .navbar {
+            background-color: #293241;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        .nav-link {
+            font-weight: bold;
+            color: #fff;
+        } {% endcomment %}
+
+        .container {
+            padding: 80px 20px;
+        }
+
+        .btn-primary {
+            background-color: #ee6c4d;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #f08858;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Employee Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all_emp">View All Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_emp">Add Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/remove_emp">Remove Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/filter_emp">Filter Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sort_by_salary">Sort by Salary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update_emp">Update Salary</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <h1><b>Welcome to the Employee Portal!</b></h1>
+        <p>Select an option from the menu above to manage employees.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://images.pexels.com/photos/3183196/pexels-photo-3183196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        .nav-link {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .container {
+            padding: 80px 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Employee Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all_emp">View All Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_emp">Add Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/remove_emp">Remove Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/filter_emp">Filter Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sort_by_salary">Sort by Salary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update_emp">Update Salary</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <h1>Welcome to the Employee Portal</h1>
+        <p>Select an option from the menu above to manage employees.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html> {% endcomment %}
+
+
+
+
+
+
+
+{% comment %} <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Office Employee Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Employee Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all_emp">View All Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_emp">Add Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/remove_emp">Remove Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/filter_emp">Filter Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sort_by_salary">Sort by Salary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update_emp">Update Salary</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to the Employee Portal</h1>
+        <p>Select an option from the menu above to manage employees.</p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+ {% endcomment %}
+
+
+
+
+
+
+{% comment %} <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Office Employee Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Employee Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all_emp">All Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_emp">Add Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/remove_emp">Remove Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/filter_emp">Filter Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sort_by_salary">Sort by Salary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/update_emp">Update Salary</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to the Employee Portal</h1>
+        <p>Select an option from the menu above to manage employees.</p>
+        <a class="btn btn-primary" href="/all_emp">View All Employees</a>
+        <a class="btn btn-primary" href="/add_emp">Add an Employee</a>
+        <a class="btn btn-primary" href="/remove_emp">Remove an Employee</a>
+        <a class="btn btn-primary" href="/filter_emp">Filter Employee Details</a>
+        <a class="btn btn-primary" href="/sort_by_salary">Order by Salary</a>
+        <a class="btn btn-primary" href="/update_emp">Update Salary</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https {% endcomment %}
+
+
+
+
+
+
+{% comment %} <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Office Employee Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('https://content.cdn.sap.com/is/image/sap/293994:3840x1648?wid=1920&hei=824&fit=stretch,1');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #1A1A1A, #333333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 50px;
+        }
+
+        h1:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #4CAF50, #45a049);
+            border: 1px solid #45a049;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 1.5em;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #45a049, #4CAF50);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4">Office Employee Management System</h1>
+        <a class="btn btn-primary" href="/all_emp" role="button">View All Employees</a>
+        <a class="btn btn-primary" href="/add_emp" role="button">Add an Employee</a>
+        <a class="btn btn-primary" href="/remove_emp" role="button">Remove an Employee</a>
+        <a class="btn btn-primary" href="/filter_emp" role="button">Filter Employee Details</a>
+        <a class="btn btn-primary" href="/sort_by_salary" role="button">Order by Salary</a>
+        <a class="btn btn-primary" href="/update_emp" role="button">Update Salary</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+
+    <title class='tit'>Office Employee Management System!</title>
+
+
+    <style>
+        body { {% endcomment %}
+            {% comment %} background-image:url('https://www.assetpanda.com/wp-content/uploads/2020/02/home-banner.png'); {% endcomment %}
+            {% comment %} background-image:url('https://i.pinimg.com/originals/eb/34/9e/eb349e9e0e4a37f32b7d6f181da15415.jpg'); {% endcomment %}
+            {% comment %} background-image:url('https://content.cdn.sap.com/is/image/sap/293994:3840x1648?wid=1920&hei=824&fit=stretch,1'); {% endcomment %}
+            {% comment %} background-image: url('https://www.ciphr.com/wp-content/uploads/2023/01/arrow-bg-r.jpg'); {% endcomment %}
+            {% comment %} background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20200701/ourmid/pngtree-original-design-business-office-management-system-background-banner-image_346107.jpg'); {% endcomment %}
+            {% comment %} background-image: url('https://www.claromentis.com/wp-content/uploads/2021/04/6-Great-Benefits-of-Using-Employee-Task-Management-Software.png');  {% endcomment %}
+            {% comment %} background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            font-family: 'Pacifico', cursive;
+            margin:0
+        } {% endcomment %}
+
+
+        {% comment %} .container {
+            max-width: 600px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #4CAF50, #45a049);
+            border: 1px solid #45a049;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(to right, #45a049, #4CAF50);
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #1A1A1A, #333333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+            font-family:'Montserrat', sans-serif;
+        }
+
+        h1:hover {
+            transform: scale(1.1);
+        }
+
+        
+
+        
+    </style> {% endcomment %}
+{% comment %} </head>
+<body>
+<div class="container py-5">
+    <h1 class="display-4 text-center mb-5">Office Employee Management System</h1>
+    <div class="d-grid gap-3">
+        <a class="btn btn-primary btn-lg" href="/all_emp" role="button">View All Employees</a>
+        <a class="btn btn-primary btn-lg" href="/add_emp" role="button">Add an Employee</a>
+        <a class="btn btn-primary btn-lg" href="/remove_emp" role="button">Remove an Employee</a>
+        <a class="btn btn-primary btn-lg" href="/filter_emp" role="button">Filter Employee Details</a>
+        <a class="btn btn-primary btn-lg" href="/sort_by_salary" role="button">Order by Salary</a>
+        <a class="btn btn-primary btn-lg" href="/update_emp" role="button">Update Salary</a>
+    </div>
+</div> {% endcomment %}
