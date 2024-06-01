@@ -74,6 +74,8 @@
     <li><a class="dropdown-item" href="/remove_emp/{{emp.id}}">{{emp.first_name}} {{emp.last_name}}</a></li>
       {% endfor %}
   </ul>
+
+  {% comment %} When a user clicks on an employee's name in the dropdown menu, it triggers the corresponding link with the employee's ID in the URL. {% endcomment %}
 </div>
 
 
